@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  imported_at: 2014-05-12 18:01:04
+  filename: MyString
+
+two:
+  name: MyString
+  imported_at: 2014-05-12 18:01:04
+  filename: MyString

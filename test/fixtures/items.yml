@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  merchant_id: 
+  price_in_cents: 1
+  description: MyText
+
+two:
+  merchant_id: 
+  price_in_cents: 1
+  description: MyText
