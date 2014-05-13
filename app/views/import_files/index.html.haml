@@ -1,17 +1,24 @@
-%h1 Listing import_files
 
-%table
+%h1
+  = pluralize(@import_files.count, 'Import File')
+
+%table.table
   %tr
-    %th
-    %th
+    %th Name
+    %th Total Revenue
+    %th Imported at
     %th
 
   - @import_files.each do |import_file|
     %tr
-      %td= link_to 'Show', import_file
-      %td= link_to 'Edit', edit_import_file_path(import_file)
-      %td= link_to 'Destroy', import_file, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= import_file.name
+      %td= import_file.total_revenue
+      %td= import_file.imported_at
+      %td
+        = link_to 'Show', import_file, :class => 'btn btn-default'
+        = link_to 'Edit', edit_import_file_path(import_file), :class => 'btn btn-default'
+        = link_to 'Destroy', import_file, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-warning"
 
 %br
 
-= link_to 'New Import file', new_import_file_path
+= link_to 'New Import file', new_import_file_path, :class => 'btn btn-primary'

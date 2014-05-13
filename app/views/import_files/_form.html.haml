@@ -1,10 +1,6 @@
-= form_for @import_file do |f|
-  - if @import_file.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@import_file.errors.count, "error")} prohibited this import_file from being saved:"
-      %ul
-        - @import_file.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for(@import_file, html: {class: 'form form-horizontal'}) do |form|
+  = form.input :name
+  = form.input :filename
 
-  .actions
-    = f.submit 'Save'
+  = form.button :submit
+

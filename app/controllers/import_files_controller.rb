@@ -25,6 +25,7 @@ class ImportFilesController < ApplicationController
   # POST /import_files.json
   def create
     @import_file = ImportFile.new(import_file_params)
+    @import_file.import!
 
     respond_to do |format|
       if @import_file.save
