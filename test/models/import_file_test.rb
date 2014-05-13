@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class ImportFileTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
 
   def setup
     #TODO replace this with fixtures
@@ -24,25 +21,41 @@ class ImportFileTest < ActiveSupport::TestCase
     assert_equal (144 * 4), import.total_revenue
   end
 
+  def upload_file(filename)
+    src = File.join(Rails.root, "test/fixtures/" + filename)
+    File.new(src)
+  end
+
+  def import_with_file(name)
+    ImportFile.new.tap do |import|
+      import.filename = upload_file(name)
+      import.import!
+    end
+  end
+
   test "imports an empty file correctly" do
-    import = ImportFile.new
-    import.file = test_upload("")
-    import.import!
-    assert_equal 0, import.item_purchases
+    import = import_with_file("empty_file.tab")
+    assert_equal 0, import.item_purchases.count
   end
 
   test "creates missing purchasers" do
-    import = ImportFile.new
-    import.file = test_upload("example_input.tab")
-    import.import!
+    import_with_file("example_input.tab")
     assert_not_nil Purchaser.where(name: "Snake Plissken").first
   end
 
   test "doesn't duplicate existing purchasers" do
     plissken = Purchaser.create(name: "Snake Plissken")
-    import = ImportFile.new
-    import.file = test_upload(example_input.tab)
-    import.import!
+    import_with_file("example_input.tab")
     assert_equal [plissken], Purchaser.where(name: "Snake Plissken").all
+  end
+
+  test "imports the right number of items" do
+    import = import_with_file("example_input.tab")
+    assert_equal 4, import.item_purchases.count
+  end
+
+  test "total revenue imported is the right amount" do
+    import = import_with_file("example_input.tab")
+    assert_equal 95, import.total_revenue
   end
 end

@@ -14,8 +14,10 @@ class ImportFile < ActiveRecord::Base
       parts = line.split("\t")
       purchaser = Purchaser.where(name: parts[0]).first_or_create
       merchant = Merchant.where(address: parts[4], name: parts[5]).first_or_create
-      item = Item.where(merchant: merchant, description: parts[1], price: parts[2].to_f).first_or_create
-      item_purchases.create(item: item, purchaser: purchaser, count: parts[3])
+      # price is a virtual attribute, so we need to end-around.
+      # This code smells.  There should be a way around this.
+      item = Item.where(merchant: merchant, description: parts[1], price_in_cents: parts[2].to_f * 100.0).first_or_create
+      item_purchases.build(item: item, purchaser: purchaser, count: parts[3])
     end
     self.imported_at = DateTime.now
     self.save!
