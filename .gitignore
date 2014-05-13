@@ -11,6 +11,9 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+# uploads don't go into the git
+public/uploads
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
