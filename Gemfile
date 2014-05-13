@@ -12,6 +12,14 @@ gem 'sass-rails', '~> 4.0.0'
 # Haml is SO much better than erb imho
 gem 'haml-rails'
 
+# for some modicum of niceness
+gem 'rails-bootstrap'
+
+# forms are easier with simple_form
+gem 'simple_form'
+
+gem 'carrierwave'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
