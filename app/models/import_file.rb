@@ -23,4 +23,8 @@ class ImportFile < ActiveRecord::Base
     self.save!
   end
 
+  def self.total_revenue
+    self.all.inject(0) {|sum, x| sum = sum + x.total_revenue }
+  end
+
 end

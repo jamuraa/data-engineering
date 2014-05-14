@@ -58,4 +58,15 @@ class ImportFileTest < ActiveSupport::TestCase
     import = import_with_file("example_input.tab")
     assert_equal 95, import.total_revenue
   end
+
+
+  test "class can add up global total revenue: starts at zero" do
+    assert_equal 0, ImportFile.total_revenue
+  end
+
+  test "class can add up global total revenue: works" do
+    import_with_file("example_input.tab")
+    import_with_file("example_input.tab")
+    assert_equal 190, ImportFile.total_revenue
+  end
 end

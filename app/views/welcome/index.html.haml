@@ -1,0 +1,22 @@
+%h1 Welcome to the tab-delimited import app!
+
+.hero
+  %h3 Some useless stats
+  %ul
+    %li
+      = @import_file_count
+      files have been imported representing
+      = @import_file_total
+      in total revenue
+    %li
+      = @purchasers_count
+      purchasers
+    %li
+      = @merchants_count
+      merchants
+    %li
+      = @items_count
+      items
+  = link_to 'Import Another File', new_import_file_path, class: 'btn btn-primary'
+
+
