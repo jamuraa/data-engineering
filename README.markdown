@@ -1,3 +1,13 @@
+# Import Yer Stuff (livingsocial challenge)
+
+A fun little challenge project by livingsocial, finished in approx 2 hours on two flights by Michael Janssen.
+
+* To start, `bundle install` and then `rake db:migrate`
+* Uses sqlite3 for simplicity
+
+There's a TODO because this is definitely not polished or anything, and every project needs one.
+Original README follows
+
 # Challenge for Software Engineer - Big Data 
 To better assess a candidates development skills, we would like to provide the following challenge.  You have as much time as you'd like (though we ask that you not spend more than a few hours).
 
