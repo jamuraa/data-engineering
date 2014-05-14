@@ -5,6 +5,8 @@ A fun little challenge project by livingsocial, finished in approx 2 hours on tw
 * To start, `bundle install` and then `rake db:migrate`
 * Uses sqlite3 for simplicity
 
+It attempts to de-duplicate the merchants, items, and purchasers, which may not be a smart decision because there's not really enough information to determine that the people or the merchants or the items are the same.
+
 There's a TODO because this is definitely not polished or anything, and every project needs one.
 Original README follows
 
