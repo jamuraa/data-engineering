@@ -12,7 +12,7 @@
   - @import_files.each do |import_file|
     %tr
       %td= import_file.name
-      %td= import_file.total_revenue
+      %td= number_to_currency(import_file.total_revenue)
       %td= import_file.imported_at
       %td
         = link_to 'Show', import_file, :class => 'btn btn-default'

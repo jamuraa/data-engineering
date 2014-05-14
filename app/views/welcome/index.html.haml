@@ -6,7 +6,7 @@
     %li
       = @import_file_count
       files have been imported representing
-      = @import_file_total
+      = number_to_currency(@import_file_total)
       in total revenue
     %li
       = @purchasers_count
